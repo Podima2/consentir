@@ -63,3 +63,20 @@ deployments
 # artifacts
 artifacts/
 my-app/.next/static/chunks/app/page.js
+my-app/.next/static/chunks/app/layout.js
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+*.pem
+
+# vercel
+.vercel
+
+# typescript
+next-env.d.ts
