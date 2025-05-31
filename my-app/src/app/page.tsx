@@ -7,6 +7,7 @@ import { useWaitForTransactionReceipt } from "@worldcoin/minikit-react";
 import { createPublicClient, http } from "viem";
 import { worldchain } from "@/lib/chains";
 
+
 export default function Page() {
   const { data: session, status } = useSession();
   const [walletConnected, setWalletConnected] = useState(false);
@@ -15,7 +16,7 @@ export default function Page() {
   const [timeRemaining, setTimeRemaining] = useState(300); // 5 minutes in seconds
   const [claimCount, setClaimCount] = useState(0);
   const [transactionId, setTransactionId] = useState<string>("");
-
+  const [isMinting, setIsMinting] = useState(false);
 
   // Initialize Viem client
   const client = createPublicClient({
@@ -35,19 +36,67 @@ export default function Page() {
 
   // Check if user is authenticated when session changes
   useEffect(() => {
+    //@ts-ignore
     if (status === "authenticated" && session?.user?.address) {
       setWalletConnected(true);
       console.log("User authenticated:", session.user);
     }
   }, [session, status]);
 
+  // Update UI when transaction is confirmed
+  useEffect(() => {
+    if (isConfirmed && !tuteClaimed) {
+      setTuteClaimed(true);
+      setClaimCount((prevCount) => prevCount + 1);
+      setIsMinting(false);
+    }
+  }, [isConfirmed, tuteClaimed]);
+
+  // Handle wallet connection success
+  const handleWalletConnected = () => {
+    setWalletConnected(true);
+    console.log("Wallet connected");
+  };
+
+  // Handle verification success
+  const handleVerificationSuccess = () => {
+    console.log("Verification success callback triggered in TuteApp");
+    setVerified(true);
+  };
+
+  // Handle claim success
+  const handleClaimSuccess = (txId: string) => {
+    console.log("Claim initiated with transaction ID:", txId);
+    setTransactionId(txId);
+    setIsMinting(true);
+  };
+
+  // Timer effect for claim cooldown
+  useEffect(() => {
+    let timer: NodeJS.Timeout | null = null;
+
+    if (tuteClaimed && timeRemaining > 0) {
+      timer = setInterval(() => {
+        setTimeRemaining((prevTime) => prevTime - 1);
+      }, 1000);
+    } else if (timeRemaining === 0) {
+      // When timer reaches zero, enable claiming again
+      setTuteClaimed(false);
+      setVerified(false); // Reset verification for next claim cycle
+      setTimeRemaining(300); // Reset timer for next claim
+    }
+
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [tuteClaimed, timeRemaining]);
 
   return (
     <div className="flex flex-col h-[100dvh] bg-white safe-area-inset">
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 gap-8">
         <h1 className="text-3xl font-bold text-purple-600">TUTE App</h1>
-
+        {!walletConnected ? <WalletAuthButton /> : null}
       </div>
     </div>
   );
