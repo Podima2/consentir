@@ -135,7 +135,7 @@ export function WalletAuthButton({ onSuccess }: WalletAuthButtonProps) {
             className="w-full px-6 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 flex items-center justify-center gap-3 font-semibold text-base shadow-md hover:shadow-xl group disabled:opacity-50"
           >
             <LogIn className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            Sign In to Access Camera
+            Sign In
           </button>
   
           {/* Footer Note */}

@@ -46,7 +46,6 @@ export default function Page() {
     <div className="flex flex-col h-[100dvh] bg-white safe-area-inset">
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 gap-8">
-        <h1 className="text-3xl font-bold text-purple-600">TUTE App</h1>
         {!walletConnected ?   <WalletAuthButton onSuccess={handleWalletConnected} /> : null}
       </div>
     </div>
