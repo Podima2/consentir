@@ -65,24 +65,6 @@ export function WalletAuthButton({ onSuccess }: WalletAuthButtonProps) {
   };
 
   return (
-    // <button
-    //   onClick={handleWalletAuth}
-    //   disabled={isLoading}
-    //   className="px-4 py-2 bg-yellow-700 hover:bg-yellow-600 text-white rounded-lg border-2 border-yellow-900/50 font-bold shadow-md transition-colors disabled:opacity-50 tracking-wide"
-    // >
-    //   {isLoading ? (
-    //     <div className="flex items-center">
-    //       <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-    //       <span className="font-serif">Connecting...</span>
-    //     </div>
-    //   ) : (
-    //     <div className="flex items-center">
-    //       <span className="mr-2">🎰</span>
-    //       <span className="font-serif">Connect Wallet</span>
-    //     </div>
-    //   )}
-    // </button>
-
     <div className="min-h-screen bg-gradient-to-b from-background to-background/90 flex items-center justify-center px-4 py-8">
     <div className="w-full max-w-lg space-y-10">
       {/* Header Badge */}

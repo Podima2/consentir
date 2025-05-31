@@ -46,7 +46,10 @@ export default function Page() {
     <div className="flex flex-col h-[100dvh] bg-white safe-area-inset">
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 gap-8">
-        {!walletConnected ?   <WalletAuthButton onSuccess={handleWalletConnected} /> : null}
+        {!walletConnected ?   <WalletAuthButton onSuccess={handleWalletConnected} /> :
+         <>
+         hello
+        </>}
       </div>
     </div>
   );
