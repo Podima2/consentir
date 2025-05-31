@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { MiniKit } from "@worldcoin/minikit-js";
+import { LogIn, Shield } from "lucide-react";
 
 interface WalletAuthButtonProps {
   onSuccess?: () => void;
@@ -64,22 +65,87 @@ export function WalletAuthButton({ onSuccess }: WalletAuthButtonProps) {
   };
 
   return (
-    <button
-      onClick={handleWalletAuth}
-      disabled={isLoading}
-      className="px-4 py-2 bg-yellow-700 hover:bg-yellow-600 text-white rounded-lg border-2 border-yellow-900/50 font-bold shadow-md transition-colors disabled:opacity-50 tracking-wide"
-    >
-      {isLoading ? (
-        <div className="flex items-center">
-          <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          <span className="font-serif">Connecting...</span>
+    // <button
+    //   onClick={handleWalletAuth}
+    //   disabled={isLoading}
+    //   className="px-4 py-2 bg-yellow-700 hover:bg-yellow-600 text-white rounded-lg border-2 border-yellow-900/50 font-bold shadow-md transition-colors disabled:opacity-50 tracking-wide"
+    // >
+    //   {isLoading ? (
+    //     <div className="flex items-center">
+    //       <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+    //       <span className="font-serif">Connecting...</span>
+    //     </div>
+    //   ) : (
+    //     <div className="flex items-center">
+    //       <span className="mr-2">🎰</span>
+    //       <span className="font-serif">Connect Wallet</span>
+    //     </div>
+    //   )}
+    // </button>
+
+    <div className="min-h-screen bg-gradient-to-b from-background to-background/90 flex items-center justify-center px-4 py-8">
+    <div className="w-full max-w-lg space-y-10">
+      {/* Header Badge */}
+      <div className="text-center space-y-5">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm shadow-sm">
+          <Shield className="w-5 h-5" />
+          Privacy-First Camera
         </div>
-      ) : (
-        <div className="flex items-center">
-          <span className="mr-2">🎰</span>
-          <span className="font-serif">Connect Wallet</span>
+  
+        {/* Heading & Description */}
+        <div className="space-y-3">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+            <span className="bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text">
+              Secure Capture
+            </span>
+          </h1>
+          <p className="text-base text-muted-foreground max-w-md mx-auto leading-relaxed">
+            Your privacy matters. Sign in to access our secure camera with automatic face blurring and privacy controls.
+          </p>
         </div>
-      )}
-    </button>
+      </div>
+  
+      {/* Main Card */}
+      <div className="relative">
+        <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 blur-xl opacity-50"></div>
+        <div className="relative z-10 bg-white border rounded-3xl shadow-lg p-8 space-y-8">
+          
+          {/* Feature Card */}
+          <div className="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 p-5 space-y-3">
+            <div className="flex items-start gap-4">
+              <Shield className="w-6 h-6 text-primary mt-1" />
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800">
+                  Privacy-First Features
+                </h3>
+                <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside pt-2">
+                  <li>Automatic face blurring</li>
+                  <li>Secure media storage</li>
+                  <li>Privacy controls</li>
+                  <li>No data sharing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+  
+          {/* Auth Button */}
+          <button
+            onClick={handleWalletAuth}
+            disabled={isLoading}
+            className="w-full px-6 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 flex items-center justify-center gap-3 font-semibold text-base shadow-md hover:shadow-xl group disabled:opacity-50"
+          >
+            <LogIn className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            Sign In to Access Camera
+          </button>
+  
+          {/* Footer Note */}
+          <div className="text-center text-sm text-muted-foreground">
+            By signing in, you agree to our Privacy Policy and Terms of Service.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   );
 }
