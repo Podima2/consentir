@@ -21,7 +21,9 @@
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.2",
     "tw-animate-css": "^1.2.4",
-    "viem": "^2.23.5"
+    "viem": "^2.23.5",
+    "face-api.js": "0.22.2",
+    "react-webcam": "^7.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
