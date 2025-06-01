@@ -2,6 +2,10 @@
 
 A decentralized application that combines face detection technology with blockchain-based payments for privacy control. The application allows users to capture photos with automatic face blurring and provides an option to unblur faces through a payment system.
 
+## Blockscout
+
+https://worldchain-mainnet.explorer.alchemy.com/address/0x7FD7D4781690E5FC90910B83De93887B6EF84eA5?tab=contract
+
 ## Features
 
 - **Face Detection & Blurring**
