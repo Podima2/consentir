@@ -26,8 +26,7 @@ We envision a future where your digital image rights are enhanced, enabling you 
 
 ---
 ## Quick Links
- - presentation
- - video demo
+ - presentation - https://www.canva.com/design/DAGovrEJrTY/wgl4rlSomjuUV3QqDKVJWQ/edit?utm_content=DAGovrEJrTY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ## Smart Contract
 
